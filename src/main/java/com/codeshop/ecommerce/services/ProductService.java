@@ -1,6 +1,7 @@
 package com.codeshop.ecommerce.services;
 
 import com.codeshop.ecommerce.dto.ProductDTO;
+import com.codeshop.ecommerce.dto.ProductMinDTO;
 import com.codeshop.ecommerce.entities.Product;
 import com.codeshop.ecommerce.repositories.ProductRepository;
 import com.codeshop.ecommerce.services.exception.DataBaseException;
@@ -28,9 +29,9 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ProductDTO> findAll(String name, Pageable pageable) {
+    public Page<ProductMinDTO> findAll(String name, Pageable pageable) {
         Page<Product> result = repository.searchByName(name, pageable);
-        return result.map(x -> new ProductDTO(x));
+        return result.map(x -> new ProductMinDTO(x));
     }
 
     @Transactional
