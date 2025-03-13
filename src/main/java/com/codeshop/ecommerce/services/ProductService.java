@@ -1,7 +1,9 @@
 package com.codeshop.ecommerce.services;
 
+import com.codeshop.ecommerce.dto.CategoryDTO;
 import com.codeshop.ecommerce.dto.ProductDTO;
 import com.codeshop.ecommerce.dto.ProductMinDTO;
+import com.codeshop.ecommerce.entities.Category;
 import com.codeshop.ecommerce.entities.Product;
 import com.codeshop.ecommerce.repositories.ProductRepository;
 import com.codeshop.ecommerce.services.exception.DataBaseException;
@@ -68,11 +70,17 @@ public class ProductService {
         }
     }
 
-
     private void copyDtoToEntity(ProductDTO dto, Product product) {
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
         product.setImgUrl(dto.getImgUrl());
+
+        product.getCategories().clear();
+        for (CategoryDTO catDTO : dto.getCategories()) {
+            Category cat = new Category();
+            cat.setId(catDTO.getId());
+            product.getCategories().add(cat);
+        }
     }
 }
