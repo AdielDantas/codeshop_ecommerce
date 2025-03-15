@@ -33,10 +33,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Instant moment, OrderStatus orderStatus, User client, Payment payment) {
+    public Order(Long id, Instant moment, OrderStatus status, User client, Payment payment) {
         this.id = id;
         this.moment = moment;
-        this.status = orderStatus;
+        this.status = status;
         this.client = client;
         this.payment = payment;
     }
@@ -57,12 +57,12 @@ public class Order {
         this.moment = moment;
     }
 
-    public OrderStatus getOrderStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.status = orderStatus;
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
     public User getClient() {
@@ -93,12 +93,14 @@ public class Order {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Order order = (Order) o;
+
         return Objects.equals(id, order.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return id != null ? id.hashCode() : 0;
     }
 }

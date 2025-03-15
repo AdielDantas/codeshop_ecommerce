@@ -3,6 +3,7 @@ package com.codeshop.ecommerce.dto;
 import com.codeshop.ecommerce.entities.Order;
 import com.codeshop.ecommerce.entities.OrderItem;
 import com.codeshop.ecommerce.entities.OrderStatus;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -18,7 +19,11 @@ public class OrderDTO {
 
     private PaymentDTO payment;
 
+    @NotEmpty(message = "Deve ter pelo menos um item")
     private List<OrderItemDTO> items = new ArrayList<>();
+
+    public OrderDTO() {
+    }
 
     public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO client, PaymentDTO payment) {
         this.id = id;
@@ -29,14 +34,14 @@ public class OrderDTO {
     }
 
     public OrderDTO(Order entity) {
-        id = entity.getId();
-        moment = entity.getMoment();
-        status = entity.getOrderStatus();
-        client = new ClientDTO(entity.getClient());
-        payment = (entity.getPayment() == null) ? null : new PaymentDTO(entity.getPayment());
+        this.id = entity.getId();
+        this.moment = entity.getMoment();
+        this.status = entity.getStatus();
+        this.client = new ClientDTO(entity.getClient());
+        this.payment = (entity.getPayment() == null) ? null : new PaymentDTO(entity.getPayment());
         for (OrderItem item : entity.getItems()) {
-            OrderItemDTO itemDTO = new OrderItemDTO(item);
-            items.add(itemDTO);
+            OrderItemDTO itemDto = new OrderItemDTO(item);
+            items.add(itemDto);
         }
     }
 

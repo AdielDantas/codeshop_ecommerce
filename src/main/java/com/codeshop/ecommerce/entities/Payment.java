@@ -20,6 +20,9 @@ public class Payment {
     @MapsId
     private Order order;
 
+    private Payment() {
+    }
+
     public Payment(Long id, Instant moment, Order order) {
         this.id = id;
         this.moment = moment;
