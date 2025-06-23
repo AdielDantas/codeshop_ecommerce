@@ -82,21 +82,18 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.10</version>
 				<configuration>
 					<excludes>
 						<exclude>com/codeshop/ecommerce/EcommerceApplication.class</exclude>
-						<exclude>com/codeshop/ecommerce/config/**</exclude>
-						<exclude>com/codeshop/ecommerce/entities/**</exclude>
-						<exclude>com/codeshop/ecommerce/dto/**</exclude>
-						<exclude>com/codeshop/ecommerce/controllers/handlers/**</exclude>
-						<exclude>com/codeshop/ecommerce/services/exceptions/**</exclude>
+						<exclude>**/config/**</exclude>
+						<exclude>**/entities/**</exclude>
+						<exclude>**/dto/**</exclude>
+						<exclude>**/handlers/**</exclude>
+						<exclude>**/exceptions/**</exclude>
+						<exclude>**/projections/**</exclude>
 					</excludes>
 				</configuration>
 				<executions>
@@ -114,7 +111,10 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 
