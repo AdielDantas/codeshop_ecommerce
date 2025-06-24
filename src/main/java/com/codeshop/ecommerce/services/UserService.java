@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
 
         List<UserDetailsProjection> result = repository.searchUserAndRolesByEmail(username);
         if (result.size() == 0) {
-            throw new UsernameNotFoundException("Email not found");
+            throw new UsernameNotFoundException("Email não localizado");
         }
 
         User user = new User();
@@ -48,7 +48,7 @@ public class UserService implements UserDetailsService {
             return repository.findByEmail(username).get();
         }
         catch (Exception e) {
-            throw new UsernameNotFoundException("Email not found");
+            throw new UsernameNotFoundException("Email não localizado");
         }
     }
 
