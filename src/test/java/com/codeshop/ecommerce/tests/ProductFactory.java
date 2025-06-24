@@ -4,11 +4,11 @@ import com.codeshop.ecommerce.dto.ProductDTO;
 import com.codeshop.ecommerce.entities.Category;
 import com.codeshop.ecommerce.entities.Product;
 
-public class Factory {
+public class ProductFactory {
 
     public static Product createProduct() {
-        Category category = createCategory();
-        Product product = new Product(1L, "PlayStation 5", "Consectetur adipiscing elit, sed ", 3999.0, "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/17-big.jpg");
+        Category category = CategoryFactory.createCategory();
+        Product product = new Product(1L, "PlayStation 5", "consectetur adipiscing elit, sed", 3999.0, "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg");
         product.getCategories().add(category);
         return product;
     }
@@ -22,13 +22,5 @@ public class Factory {
     public static ProductDTO createProductDTO() {
         Product product = createProduct();
         return new ProductDTO(product);
-    }
-
-    public static Category createCategory() {
-        return new Category(1L, "Games");
-    }
-
-    public static Category createCategory(Long id, String name) {
-        return new Category(id, name);
     }
 }

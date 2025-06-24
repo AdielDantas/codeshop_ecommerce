@@ -6,7 +6,7 @@ import com.codeshop.ecommerce.entities.Product;
 import com.codeshop.ecommerce.repositories.ProductRepository;
 import com.codeshop.ecommerce.services.exception.DataBaseException;
 import com.codeshop.ecommerce.services.exception.ResourceNotFoundException;
-import com.codeshop.ecommerce.tests.Factory;
+import com.codeshop.ecommerce.tests.ProductFactory;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,10 +49,10 @@ public class ProductServiceTests {
         existingProductId = 1L;
         nonExistingProductId = 2L;
         dependentId = 3L;
-        product = Factory.createProduct();
+        product = ProductFactory.createProduct();
         productName = "PlayStation 5";
         page = new PageImpl<>(List.of(product));
-        productDTO = Factory.createProductDTO();
+        productDTO = ProductFactory.createProductDTO();
 
         when(repository.findById(existingProductId)).thenReturn(Optional.of(product));
         when(repository.findById(nonExistingProductId)).thenReturn(Optional.empty());
