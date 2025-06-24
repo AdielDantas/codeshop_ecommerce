@@ -1,10 +1,12 @@
 package com.codeshop.ecommerce.services;
 
+import com.codeshop.ecommerce.dto.UserDTO;
 import com.codeshop.ecommerce.entities.User;
 import com.codeshop.ecommerce.projections.UserDetailsProjection;
 import com.codeshop.ecommerce.repositories.UserRepository;
 import com.codeshop.ecommerce.tests.UserDetailsFactory;
 import com.codeshop.ecommerce.tests.UserFactory;
+import com.codeshop.ecommerce.util.CustomUserUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,9 +18,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
 public class UserServiceTests {
@@ -28,6 +31,9 @@ public class UserServiceTests {
 
     @Mock
     private UserRepository repository;
+
+    @Mock
+    private CustomUserUtil userUtil;
 
     private String existingUserName;
     private String nonExistingUserName;
@@ -43,6 +49,9 @@ public class UserServiceTests {
 
         when(repository.searchUserAndRolesByEmail(existingUserName)).thenReturn(userDetails);
         when(repository.searchUserAndRolesByEmail(nonExistingUserName)).thenReturn(new ArrayList<>());
+
+        when(repository.findByEmail(existingUserName)).thenReturn(Optional.of(user));
+        when(repository.findByEmail(nonExistingUserName)).thenReturn(Optional.empty());
     }
 
     @Test
@@ -57,5 +66,41 @@ public class UserServiceTests {
         assertThrows(UsernameNotFoundException.class, () -> {
             service.loadUserByUsername(nonExistingUserName);
         });
+    }
+
+    @Test
+    public void authenticatedShouldReturnUserWhenUserExists() {
+        when(userUtil.getLoggedUserName()).thenReturn(existingUserName);
+        User result = service.authenticated();
+
+        assertNotNull(result);
+        assertEquals(result.getUsername(), existingUserName);
+    }
+
+    @Test
+    public void authenticatedShouldThrowUsernameNotFoundExceptionWhenUserDoesNotExists() throws Exception {
+        doThrow(ClassCastException.class).when(userUtil).getLoggedUserName();
+
+        assertThrows(UsernameNotFoundException.class, () -> {
+            service.authenticated();
+        });
+    }
+
+    @Test
+    public void getMeShouldReturnUserDTOWhenUserAuthenticated() throws Exception {
+        UserService spyUserService = spy(service);
+        doReturn(user).when(spyUserService).authenticated();
+
+        UserDTO result = spyUserService.getMe();
+
+        assertNotNull(result);
+        assertEquals(result.getEmail(), existingUserName);
+    }
+
+    @Test
+    public void getMeShouldThrowUsernameNotFoundExceptionWhenUserNotAuthenticated() throws Exception {
+        UserService spyUserService = spy(service);
+
+        doThrow(UsernameNotFoundException.class).when(spyUserService).authenticated();
     }
 }
