@@ -3,7 +3,7 @@ package com.codeshop.ecommerce.services;
 import com.codeshop.ecommerce.dto.CategoryDTO;
 import com.codeshop.ecommerce.entities.Category;
 import com.codeshop.ecommerce.repositories.CategoryRepository;
-import com.codeshop.ecommerce.tests.CategoryFactory;
+import com.codeshop.ecommerce.tests.Factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ public class CategoryServiceTests {
 
     @BeforeEach
     void setUp() throws Exception {
-        category = CategoryFactory.createCategory();
+        category = Factory.createCategory();
 
         list = new ArrayList<>();
         list.add(category);
