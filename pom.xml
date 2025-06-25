@@ -87,13 +87,14 @@
                 <version>0.8.10</version>
                 <configuration>
                     <excludes>
-                        <exclude>com/codeshop/ecommerce/EcommerceApplication.class</exclude>
-                        <exclude>**/config/**</exclude>
-                        <exclude>**/entities/**</exclude>
-                        <exclude>**/dto/**</exclude>
-                        <exclude>**/handlers/**</exclude>
-                        <exclude>**/exceptions/**</exclude>
-                        <exclude>**/projections/**</exclude>
+                        <exclude> com/codeshop/ecommerce/EcommerceApplication.class</exclude>
+                        <exclude> com/codeshop/ecommerce/config/**</exclude>
+                        <exclude> com/codeshop/ecommerce/entities/**</exclude>
+                        <exclude> com/codeshop/ecommerce/dto/**</exclude>
+                        <exclude> com/codeshop/ecommerce/controllers/handlers/**</exclude>
+                        <exclude> com/codeshop/ecommerce/services/exceptions/**</exclude>
+                        <exclude> com/codeshop/ecommerce/util/**</exclude>
+                        <exclude> com/codeshop/ecommerce/controllers/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -103,11 +104,14 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
+                        <id>jacoco-report</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>target/jacoco-report</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
