@@ -1,7 +1,6 @@
 package com.codeshop.ecommerce.controllers;
 
 import com.codeshop.ecommerce.dto.OrderDTO;
-import com.codeshop.ecommerce.dto.ProductDTO;
 import com.codeshop.ecommerce.services.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/orders")
-public class OrderControllers {
+public class OrderController {
 
     @Autowired
     private OrderService service;
