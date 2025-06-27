@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.3</version>
+        <version>3.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.codeshop</groupId>
-    <artifactId>ecommerce</artifactId>
+    <groupId>com.devsuperior</groupId>
+    <artifactId>dscatalog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ecommerce</name>
-    <description>Projeto ecommerce Java Spring</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <name>dscatalog</name>
+    <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>21</java.version>
     </properties>
@@ -38,6 +26,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -52,27 +41,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-authorization-server</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
@@ -82,19 +67,39 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version> <!--$NO-MVN-MAN-VER$ -->
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version>
                 <configuration>
                     <excludes>
-                        <exclude> com/codeshop/ecommerce/EcommerceApplication.class</exclude>
-                        <exclude> com/codeshop/ecommerce/config/**</exclude>
-                        <exclude> com/codeshop/ecommerce/entities/**</exclude>
-                        <exclude> com/codeshop/ecommerce/dto/**</exclude>
-                        <exclude> com/codeshop/ecommerce/controllers/handlers/**</exclude>
-                        <exclude> com/codeshop/ecommerce/services/exceptions/**</exclude>
-                        <exclude> com/codeshop/ecommerce/util/**</exclude>
-                        <exclude> com/codeshop/ecommerce/controllers/**</exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/EcommerceApplication.class
+                        </exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/config/**
+                        </exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/entities/**
+                        </exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/dto/**
+                        </exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/controllers/handlers/**
+                        </exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/services/exceptions/**
+                        </exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/util/**
+                        </exclude>
+                        <exclude>
+                            com/codeshop/ecommerce/controllers/**</exclude>s
                     </excludes>
                 </configuration>
                 <executions>
