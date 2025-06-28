@@ -21,6 +21,7 @@ public class ProductFactory {
 
     public static ProductDTO createProductDTO() {
         Product product = createProduct();
+        product.setId(null);
         return new ProductDTO(product);
     }
 }
