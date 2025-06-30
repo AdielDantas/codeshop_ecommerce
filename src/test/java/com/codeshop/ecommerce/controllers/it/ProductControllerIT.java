@@ -1,4 +1,4 @@
-package com.codeshop.ecommerce.controllers;
+package com.codeshop.ecommerce.controllers.it;
 
 import com.codeshop.ecommerce.dto.ProductDTO;
 import com.codeshop.ecommerce.entities.Product;
