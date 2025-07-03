@@ -1,22 +1,16 @@
 📦 Codeshop Ecommerce - Backend
 Backend de um sistema de e-commerce desenvolvido em Java com Spring Boot, com autenticação JWT, gestão de produtos, pedidos e integração com Stripe.
 
-🛠 Tecnologias
+🛠 Tecnologias:
 Java 17+
-
 Spring Boot 3.x
-
 PostgreSQL (banco de dados)
-
 Spring Security + JWT (autenticação)
-
 Swagger (OpenAPI 3.0) (documentação)
-
 Maven (gerenciamento de dependências)
-
 JUnit 5 + Mockito (testes)
 
-⚙️ Funcionalidades
+⚙️ Funcionalidades:
 ✅ Autenticação de usuários (registro/login) com roles (USER e ADMIN)
 ✅ CRUD de produtos (apenas administradores)
 ✅ Gestão de pedidos (criação, listagem e atualização de status)
@@ -24,8 +18,8 @@ JUnit 5 + Mockito (testes)
 ✅ Paginação e ordenação em endpoints (ex: /products)
 ✅ Integração com Stripe (simulação de pagamento)
 
-🏗️ Estrutura do Projeto
-text
+🏗️ Estrutura do Projeto:
+
 src/  
 ├── main/  
 │   ├── java/  
@@ -42,7 +36,7 @@ src/
 ├── test/                      # Testes  
 └── pom.xml                    # Dependências  
 
-📌 Destaques
+📌 Destaques:
 🔹 Clean Architecture: Separação clara entre camadas (DTOs, serviços, entidades).
 🔹 Segurança robusta: JWT + Spring Security com controle de roles.
 🔹 Tratamento de exceções: Global com @ControllerAdvice.
