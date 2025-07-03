@@ -1,4 +1,5 @@
 📦 Codeshop Ecommerce - Backend
+
 Backend de um sistema de e-commerce desenvolvido em Java com Spring Boot, com autenticação JWT, gestão de produtos, pedidos e integração com Stripe.
 
 🛠 Tecnologias:
