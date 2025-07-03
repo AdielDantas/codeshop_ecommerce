@@ -2,22 +2,9 @@
 
 Backend de um sistema de e-commerce desenvolvido em Java com Spring Boot, com autenticação JWT, gestão de produtos, pedidos e integração com Stripe.
 
-🛠 Tecnologias:
-Java 17+
-Spring Boot 3.x
-PostgreSQL (banco de dados)
-Spring Security + JWT (autenticação)
-Swagger (OpenAPI 3.0) (documentação)
-Maven (gerenciamento de dependências)
-JUnit 5 + Mockito (testes)
+🛠 <b>Tecnologias</b>: Java 17+, Spring Boot, PostgreSQL (banco de dados), Spring Security + JWT (autenticação), Maven (gerenciamento de dependências), JUnit 5 + Mockito (testes)
 
-⚙️ Funcionalidades:
-✅ Autenticação de usuários (registro/login) com roles (USER e ADMIN)
-✅ CRUD de produtos (apenas administradores)
-✅ Gestão de pedidos (criação, listagem e atualização de status)
-✅ Validações de dados com Bean Validation
-✅ Paginação e ordenação em endpoints (ex: /products)
-✅ Integração com Stripe (simulação de pagamento)
+⚙️ <b>Funcionalidades</b>: Autenticação de usuários (registro/login) com roles (USER e ADMIN), CRUD de produtos (apenas administradores), Gestão de pedidos (criação, listagem e atualização de status), Validações de dados com Bean Validation, Paginação e ordenação em endpoints (ex: /products), Integração com Stripe (simulação de pagamento)
 
 🏗️ Estrutura do Projeto:
 
